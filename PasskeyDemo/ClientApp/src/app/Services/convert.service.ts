@@ -14,6 +14,9 @@ export class ConvertService {
   constructor() { }
 
   CoerceToBase64Url(thing: any): string {
+    if (thing === null || thing === undefined) {
+      return "";
+    }
     // Array or ArrayBuffer to Uint8Array
     if (Array.isArray(thing)) {
       thing = Uint8Array.from(thing);

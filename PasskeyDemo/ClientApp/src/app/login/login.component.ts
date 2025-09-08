@@ -72,7 +72,9 @@ export class LoginComponent implements OnInit {
     let clientDataJson = this.convertService.CoerceToBase64Url(credentialResponse.clientDataJSON);
     let rawId = this.convertService.CoerceToBase64Url(assertedCredential.rawId);
     let signature = this.convertService.CoerceToBase64Url(credentialResponse.signature);
-    let userHandle = this.convertService.CoerceToBase64Url(credentialResponse.userHandle);
+    let userHandle = credentialResponse.userHandle == null
+      ? ""
+      : this.convertService.CoerceToBase64Url(credentialResponse.userHandle);
 
     let requestBody = {
       id: id,
