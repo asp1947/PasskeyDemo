@@ -133,7 +133,7 @@ public class AuthenticationController : ControllerBase
     public async Task<IApiResponse<LoginResponseDto>> MakeAssertion([FromBody] MakeAssertionDto assertionDto)
     {
         var userHandle = assertionDto.UserHandle;
-        if (userHandle.Length <= 0)
+        if (userHandle == null || userHandle.Length == 0)
         {
             var userByCredential = await _userCredential.GetUserByCredentialId(assertionDto.Id);
             if (userByCredential is null) return new GenericApiResponse<LoginResponseDto>(null, "Unable to find user");

@@ -12,7 +12,7 @@ public class MakeAssertionDto : PublicKeyCredentialDto
     public byte[] Signature { get; init; }
     
     [JsonConverter(typeof(Base64UrlConverter))]
-    public byte[] UserHandle { get; init; }
+    public byte[]? UserHandle { get; init; }
     
     public AssertionOptions AssertionOptions { get; init; }
 }
