@@ -23,7 +23,11 @@ public class WebAuthentication : IWebAuthentication
         var options = _fido2.RequestNewCredential(
             user,
             new List<PublicKeyCredentialDescriptor>(),
-            new AuthenticatorSelection(),
+            new AuthenticatorSelection
+            {
+                RequireResidentKey = true,
+                UserVerification = UserVerificationRequirement.Required
+            },
             AttestationConveyancePreference.None,
             new AuthenticationExtensionsClientInputs());
             
